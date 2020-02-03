@@ -1,18 +1,20 @@
 (function(exports) {
   function NoteList() {
-    this.list = ['string'];
+    this.list = [];
   };
-
-  NoteList.prototype.print = function(){
-      this.list
-  }
-
-  NoteList.prototype.add = function(string){
-    this.list.push(string)
-  }
 
   exports.NoteList = NoteList;
 })(this);
+
+NoteList.prototype.show = function() {
+  return this.list
+};
+
+NoteList.prototype.createAndStore = function(body) {
+  var note = new Note()
+  note.text = body
+  this.list.push(note)
+};
 
 
 var assert = {

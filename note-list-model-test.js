@@ -1,17 +1,17 @@
-function testNoteList() {
+//import { Note } from "./notes-model";
+
+function testCreateAndStore() {
   var noteList = new NoteList();
-  noteList.add('another')
-  assert.isTrue(noteList.list.length === 2);
+  noteList.createAndStore("content")
+  assert.isTrue(noteList.list[0] instanceof Note);
 };
 
-testNoteList();
+testCreateAndStore();
 
-function testReturnNoteList() {
+function testShow() {
   var noteList = new NoteList();
-  noteList.add('another')
-  var b = ['string', 'another']
-  var a = ['string', 'another']
-  assert.isTrue(a == b);
+  noteList.createAndStore("a note")
+  assert.isTrue(noteList.show()[0].text === "a note");
 };
 
-testReturnNoteList();
+testShow(); 
