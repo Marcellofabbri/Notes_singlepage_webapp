@@ -3,8 +3,8 @@
     this.list = ['string'];
   };
 
-  NoteList.prototype.show = function(){
-      return this.list
+  NoteList.prototype.print = function(){
+      this.list
   }
 
   NoteList.prototype.add = function(string){
