@@ -11,10 +11,33 @@
 // })(this);
 
 
-
-function testTextOnInstantiation() {
+function testTextInTextProperty() {
   var note = new Note();
-  assert.isTrue(note.show === 'first note');
+  assert.isTrue(note.text === 'first note');
 };
 
-testTextOnInstantiation();
+testTextInTextProperty();
+
+
+function testShowTextProperty() {
+  var note = new Note();
+  note.text = 'abc'
+  assert.isTrue(note.show() === 'abc');
+};
+
+testShowTextProperty();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

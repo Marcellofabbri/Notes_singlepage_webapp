@@ -1,7 +1,11 @@
 (function(exports) {
   function Note() {
-    this.show = 'first note';
+    this.text = 'first note';
   };
+
+  Note.prototype.show = function(){
+      return this.text
+  }
 
   exports.Note = Note;
 })(this);
