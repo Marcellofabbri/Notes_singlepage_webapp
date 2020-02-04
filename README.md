@@ -1,10 +1,8 @@
 Installing Node from Terminal
     Check if there's a version installed:
-    ```
-    $ node -v
-    ```
+    ```$ node -v
 
-    If not, install:
+If not, install:
     ```
     $ brew install node
     ```
