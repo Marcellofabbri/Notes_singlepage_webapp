@@ -3,9 +3,10 @@ Installing Node from Terminal
     ```$ node -v```
 
 If not, install:
-    ```
-    $ brew install node
-    ```
+
+```
+$ brew install node
+```
 
 Initialize Node with Http-Server library from the top level of the project's directory:
 
