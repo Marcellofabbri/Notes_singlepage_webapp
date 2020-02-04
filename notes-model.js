@@ -1,6 +1,6 @@
 (function(exports) {
-  function Note() {
-    this.text = 'first note';
+  function Note(body) {
+    this.text = body;
   };
 
   Note.prototype.show = function(){
