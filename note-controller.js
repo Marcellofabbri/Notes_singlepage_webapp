@@ -1,7 +1,31 @@
-function NoteController() {
+(function(exports) {
+  function NoteController() {
+    this.noteListView = new NoteListView();
+    this.ncNoteList = this.noteListView.noteList;
+  };
+
+  exports.NoteController = NoteController;
+})(this);
+
+NoteController.prototype.addNote = function(body) {
+    this.ncNoteList.createAndStore(body)
 }
 
-NoteController.prototype.greeting = function(message){
-  var el = document.getElementById("app");
+NoteController.prototype.view = function() {
+    return this.noteListView
+}
+
+NoteController.prototype.insertion = function(id){
+  var message = this.view().htmlString()
+  var el = document.getElementById(id);
   el.innerHTML = message;
 }
+
+
+var assert = {
+    isTrue: function(assertionToCheck) {
+      if (!assertionToCheck) {
+        throw new Error("Assertion failed: " + assertionToCheck + " is not truthy");
+      }
+    }
+  };
