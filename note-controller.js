@@ -16,7 +16,7 @@ NoteController.prototype.view = function() {
 }
 
 NoteController.prototype.insertion = function(id, doc = document){
-  var message = this.view().htmlString()
+  var message = this.view().htmlStringTwenty()
   var el = doc.getElementById(id);
   el.innerHTML = message;
 }
