@@ -1,6 +1,7 @@
 (function(exports) {
   function Note(body) {
     this.text = body;
+    this.id = null;
   };
 
   Note.prototype.show = function(){

@@ -13,6 +13,7 @@ NoteList.prototype.show = function() {
 NoteList.prototype.createAndStore = function(body) {
   var note = new Note()
   note.text = body
+  note.id = this.list.length
   this.list.push(note)
 };
 
