@@ -17,14 +17,14 @@ function testInsertion() {
   var nc = new NoteController();
   nc.addNote("Note number one")
   nc.addNote("Note number two")
-    window.onload = function() {
+    //window.onload = function() {
     var document2 = document.implementation.createHTMLDocument('')
     var div = document2.createElement('div')
     div.id = "id"
     document2.body.append(div)
-    nc.insertion("id");
+    nc.insertion("id", document2);
     assert.isTrue(div.innerHTML === "<ul><li><div>Note number one</div></li><li><div>Note number two</div></li></ul>")
-    };
-    window.stop();
+    //window.stop();
+    //};
 }
 testInsertion();
