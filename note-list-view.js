@@ -18,7 +18,7 @@
 NoteListView.prototype.htmlStringTwenty = function() {
   var array = ["<ul>"]
   for (i = 0; i < this.noteList.list.length; i++) {
-    array.push("<li><div>" + this.noteList.list[i].text.substring(0, 20) + "</div></li>")
+    array.push("<li><a href='#notes/" + i + "' id='" + i + "'>" + this.noteList.list[i].text.substring(0, 20) + "</a></li>")
   }
   array.push("</ul>")
   return array.join("");

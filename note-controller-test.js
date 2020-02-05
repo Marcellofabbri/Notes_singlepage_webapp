@@ -23,7 +23,7 @@ function testInsertion() {
     div.id = "id"
     document2.body.append(div)
     nc.insertion("id", document2);
-    assert.isTrue(div.innerHTML === "<ul><li><div>Note number one</div></li><li><div>Note number two</div></li></ul>")
+    assert.isTrue(div.innerHTML === '<ul><li><a href="#notes/0" id="0">Note number one</a></li><li><a href="#notes/1" id="1">Note number two</a></li></ul>')
     //window.stop();
     //};
 }
