@@ -50,7 +50,18 @@ function enforceRenderMethod() {
   var el = document.getElementById("app")
   el.innerHTML = snv.render();
 }
+function listenForSubmission() {
+  var form = document.getElementById('form');
+  form.addEventListener('submit', MaRcElLo)
+};
+window.onload = function() {
+  listenForSubmission()
+}
 
+function MaRcElLo(event) {
+  event.preventDefault()
+  document.getElementById("app").innerHTML = "Hello Again"
+}
 
 var assert = {
     isTrue: function(assertionToCheck) {
