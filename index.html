@@ -12,19 +12,115 @@
   <script src="note-controller-test.js"></script>
   <script src="single-note-view.js"></script>
   <script src="single-note-view-test.js"></script>
+  <style>
+    input[type=text] {
+  overflow-x: hidden;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+  padding: 100px 20px;
+  margin: 20px 0;
+  box-sizing: border-box;
+  background-color: rgb(255, 226, 109);
+  color: black;
+  margin-left: 5px;
+  height:100px;
+  padding-top:10px;
+  vertical-align:top;
+  }
+  textarea {
+    max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  text-align: justify;
+  width: 100%;
+  height: 0px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+  }
+
+}
+  </style>
 </head>
 
 <body>
-  Your notes
+  <h1><center>Your notes</center></h1>
   <br>
   <div id="app"></div>
-     <form action="/#notes/1" id="form" method="GET">
+     <form action="/#notes/1" id="form" method="POST">
      Body of note<br>
      <input type="text" id="textarea" value="">
      <br>
      <input type="submit" value="Submit" id="submission">
 </form> 
+
+<form action="/" id="back" method="GET">
+<input type="hidden" id="gohome" value="Back to HomePage">
+</form>
   
 </body>
-</html>
 
+<script>
+  (function(exports) {
+  function loadUpStoredNoteController() {
+    if (localStorage.length === 0) {
+      var nc = new NoteController()
+    }
+  }
+  exports.nc = nc
+})(this);
+  //localStorage.setItem("theNoteController", nc);
+  
+
+  listenForSubmission()
+  showNoteOnPage()
+  listenToBack()
+
+  function listenForSubmission() {
+  var form = document.getElementById('form');
+  form.addEventListener('submit', loadOnPage)
+  }
+
+  function loadOnPage(event) {
+  body = event.srcElement.elements[0].value
+  event.preventDefault()
+  nc.addNote(body)
+  nc.insertion("app")
+  localStorage.setItem("theNoteController", JSON.stringify(nc))
+  }
+
+  function showNoteOnPage() {
+  window.addEventListener("hashchange", enforceRenderMethod);
+  localStorage.setItem("theNoteController", JSON.stringify(nc))
+  }
+
+  function enforceRenderMethod() {
+  var urlId = location.hash.split('#notes/')[1]
+  var body = nc.view().noteList.list[urlId].text
+  var snv = new SingleNoteView(body)
+  var el = document.getElementById("app")
+  el.innerHTML = snv.render();
+  localStorage.setItem("theNoteController", JSON.stringify(nc))
+  document.getElementById("gohome").setAttribute("type", "submit")
+}
+  
+  function listenToBack() {
+    var back = document.getElementById('back')
+    back.addEventListener('submit', loadBackUp)
+    console.log("we're listening")
+  }
+
+  function loadBackUp(event) {
+    var nc = JSON.parse(localStorage.getItem('theNoteController'))
+    console.log(nc)
+    nc.insertion("app")
+  }
+
+</script>
+
+</html>

@@ -34,38 +34,7 @@ NoteController.prototype.insertion = function(id, doc = document){
 // }
 var nc = new NoteController();
 
-showNoteOnPage();
 
-function showNoteOnPage() {
-  window.addEventListener("hashchange", enforceRenderMethod);
-}
-
-function getIdFromUrl() {
-  location.hash.split('#notes/')[1]
-}
-
-function enforceRenderMethod() {
-  var urlId = location.hash.split('#notes/')[1]
-  var body = nc.view().noteList.list[urlId].text
-  var snv = new SingleNoteView(body)
-  var el = document.getElementById("app")
-  el.innerHTML = snv.render();
-}
-function listenForSubmission() {
-  var form = document.getElementById('form');
-  form.addEventListener('submit', MaRcElLo)
-};
-window.onload = function() {
-  listenForSubmission()
-}
-
-
-function MaRcElLo(event) {
-  body = event.srcElement.elements[0].value
-  event.preventDefault()
-  nc.addNote(body)
-  nc.insertion("app")
-}
 
 var assert = {
     isTrue: function(assertionToCheck) {
