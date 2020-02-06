@@ -32,6 +32,7 @@ NoteController.prototype.insertion = function(id, doc = document){
 //   var el = doc.getElementById(elementId)
 //   el.innerHTML = snv.render(elementTag)
 // }
+var nc = new NoteController();
 
 showNoteOnPage();
 
@@ -58,9 +59,12 @@ window.onload = function() {
   listenForSubmission()
 }
 
+
 function MaRcElLo(event) {
+  body = event.srcElement.elements[0].value
   event.preventDefault()
-  document.getElementById("app").innerHTML = "Hello Again"
+  nc.addNote(body)
+  nc.insertion("app")
 }
 
 var assert = {

@@ -1,3 +1,4 @@
+
 function testNoteControllerInstantiation() {
     var nc = new NoteController()
     assert.isTrue(nc.ncNoteList instanceof NoteList)
@@ -30,7 +31,7 @@ function testInsertion() {
 testInsertion();
 
 function testLoadContent() {
-  nc = new NoteController();
+  var nc = new NoteController();
   nc.addNote("Twentycharactersonlythisportionshouldnotbedisplayed")
   nc.addNote("Note number two")
   // var document2 = document.implementation.createHTMLDocument('')
@@ -54,6 +55,16 @@ function testLoadContent() {
 }
 testLoadContent;
 
+function testTypeUpANote() {
+  dummyDocument()
+  document2.getElementById('textarea') 
+  document2.getElementById('textarea').value = "the content"
+  document2.getElementById('submission').click()
+  
+}
+testTypeUpANote
+
+
 
 
 function simulateClick(document = document) {
@@ -70,4 +81,23 @@ function enforceRenderMethodMock() {
   var snv = new SingleNoteView(body)
   var el = document2.getElementById("app")
   el.innerHTML = snv.render();
+}
+
+function dummyDocument() {
+  var nc = new NoteController()
+  var document2 = document.implementation.createHTMLDocument()
+  var div = document2.createElement('div')
+  div.id = "app"
+  document2.body.append(div)
+  var form = document2.createElement('form')
+  form.id = "form"
+  document2.body.append(form)
+  var input = document2.createElement('input')
+  input.setAttribute("type", "text")
+  input.id = "textarea"
+  document2.getElementById('form').append(input)
+  var submit = document2.createElement('input')
+  submit.setAttribute("type", "submit")
+  submit.id = "submission"
+  document2.getElementById('form').append(submit)
 }
