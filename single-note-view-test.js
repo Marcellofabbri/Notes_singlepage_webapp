@@ -7,9 +7,9 @@ testSingleNoteViewInstantiation();
 
 function testRenderNote() {
     var snv = new SingleNoteView("the body of a note");
-    var document2 = document.implementation.createHTMLDocument('')
-    snv.render(document2, "div")
-    element = document2.getElementsByTagName("div")[0]
-    assert.isTrue(element.outerHTML === "<" + "div" + ">the body of a note</" + "div" + ">")
+    // var document2 = document.implementation.createHTMLDocument('')
+    // snv.render(document, "div")
+    // element = document2.getElementsByTagName("div")[0]
+    assert.isTrue(snv.render("div") === "<div>the body of a note</div>")
 };
 testRenderNote();

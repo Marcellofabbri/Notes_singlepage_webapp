@@ -6,10 +6,11 @@
     exports.SingleNoteView = SingleNoteView;
   })(this);
 
-SingleNoteView.prototype.render = function(doc = document, element = "div") {
-  el = doc.createElement(element)
-  el.innerText = this.note.text
-  doc.body.append(el)
+SingleNoteView.prototype.render = function(element = "div") {
+  //el = doc.getElementById(element)
+  //el.innerText = this.note.text
+  //doc.body.append(el)
+  return "<" + element + ">" + this.note.text + "</" + element + ">"
 }
 
 
